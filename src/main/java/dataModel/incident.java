@@ -8,23 +8,49 @@ import java.util.Date;
 public class incident {
 
     private Long id;
+    private String stanowisko;
+    private Date data;
+    private String[] godziny;
 
-    private String title;
-    private Date date;
+    public String getStanowisko() {
+        return stanowisko;
+    }
 
-    public Event() {
+    public void setStanowisko(String stanowisko) {
+        this.stanowisko = stanowisko;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public String[] getGodziny() {
+        return godziny;
+    }
+
+    public void setGodziny(String[] godziny) {
+        this.godziny = godziny;
+    }
+
+    public incident() {
         // this form used by Hibernate
     }
 
-    public Event(String title, Date date) {
+    public incident(String stanowisko, Date data, String[] godziny) {
         // for application use, to create new events
-        this.title = title;
-        this.date = date;
+
+        this.godziny = godziny;
+        this.data = data;
+        this.stanowisko = stanowisko;
     }
 
     @Id
-    @GeneratedValue(generator="increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
     public Long getId() {
         return id;
     }
@@ -33,21 +59,4 @@ public class incident {
         this.id = id;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "EVENT_DATE")
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }
